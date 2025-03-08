@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: ms-discount-service
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+   console:
+     enabled: true
+     path: /h2-console
+  jpa:
+   hibernate:
+     ddl-auto: update
+
+feign:
+  client:
+    host: "https://v6.exchangerate-api.com/v6"
+    apiKey: "b5c31a3d826b00af552f5f48"
+    maxAttempt: 3
+    sleepTime: 100
+
+discounts:
+  rates:
+    EMPLOYEE: "0.30"
+    AFFILIATE: "0.10"
+    CUSTOMER: "0.05"
+    DEFAULT: "0.0"
+  customerTenureThreshold: 2
+
+cache:
+  maxSize: 10
+  duration: 10
+
+security:
+  jwt:
+    secretKey: "y3jQ9gsrEiW4cxwKA1tY4hYqBafN2G/6FpQcU5LqAk0="
+    expirationTime: 600000
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  api-docs:
+    enabled: true
+  group-configs:
+    - group: discount
+      paths-to-match: /api/**
+      packages-to-scan: com.discount

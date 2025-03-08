@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  ms-discount-service:
+    image: localhost/ms-discount-service:1.0.0
+    container_name: ms-discount-service
+    ports:
+      - "8080:8080"
